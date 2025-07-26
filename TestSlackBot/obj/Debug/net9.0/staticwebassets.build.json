@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "OETvI+S6rNtd8jF8Z6w8EExJyaLaRFhvZUiBDjmo1jc=",
+  "Source": "TestSlackBot",
+  "BasePath": "_content/TestSlackBot",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
