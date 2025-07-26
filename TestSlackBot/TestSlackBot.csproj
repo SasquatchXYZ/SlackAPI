@@ -8,12 +8,8 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-      <Folder Include="Handlers\" />
-      <Folder Include="Models\" />
+        <PackageReference Include="SlackNet.AspNetCore" Version="0.17.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
     </ItemGroup>
 
 </Project>
