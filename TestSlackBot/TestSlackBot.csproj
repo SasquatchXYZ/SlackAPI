@@ -8,12 +8,11 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-      <Folder Include="Handlers\" />
-      <Folder Include="Models\" />
+      <ProjectReference Include="..\SlackClient\SlackClient.csproj" />
     </ItemGroup>
 
 </Project>
