@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using SlackNet;
-using SlackNet.AspNetCore;
-using SlackNet.WebApi;
+using SlackClient;
+using SlackClient.Models;
 using TestSlackBot.Models;
 
 namespace TestSlackBot.Controllers;
@@ -10,16 +9,13 @@ namespace TestSlackBot.Controllers;
 [Route("[controller]")]
 public class SlackController : ControllerBase
 {
-    private readonly ISlackRequestHandler _slackRequestHandler;
-    private readonly ISlackApiClient _slackApiClient;
+    private readonly ISlackClient _slackApiClient;
     // private readonly SlackEndpointConfiguration _slackEndpointConfiguration;
 
     public SlackController(
-            ISlackRequestHandler slackRequestHandler,
-            ISlackApiClient slackApiClient)
+            ISlackClient slackApiClient)
         // SlackEndpointConfiguration slackEndpointConfiguration,
     {
-        _slackRequestHandler = slackRequestHandler;
         _slackApiClient = slackApiClient;
         // _slackEndpointConfiguration = slackEndpointConfiguration;
     }
@@ -30,22 +26,44 @@ public class SlackController : ControllerBase
         [FromBody] SlackRequest request,
         CancellationToken cancellationToken = default)
     {
-        var message = new Message { Text = request.Message, Channel = request.Channel };
-        await _slackApiClient.Chat.PostMessage(
+        var message = new PostMessageRequest
+        {
+            Text = request.Message,
+            Channel = request.Channel,
+        };
+
+        var response = await _slackApiClient.PostMessage(
             message,
             cancellationToken);
+
+        if (response is not null)
+        {
+            Console.WriteLine($"Channel: {response?.Channel}");
+            Console.WriteLine($"Ts: {response?.Ts}");
+
+            var threadMessage = new PostMessageRequest
+            {
+                Text = "Testing threaded reply :thumbsup:",
+                Channel = request.Channel,
+                ThreadTs = response?.Ts,
+            };
+
+            var threadResponse = await _slackApiClient.PostMessage(
+                threadMessage,
+                cancellationToken);
+        }
 
         return Ok();
     }
 
-    [HttpPost]
-    [Route("/Event")]
-    public async Task<ActionResult> Event()
-    {
-        var result = await _slackRequestHandler.HandleEventRequest(
-            HttpContext.Request);
-        // _slackEndpointConfiguration);
-
-        return Ok(result);
-    }
+    // [HttpPost]
+    // [Route("/Event")]
+    // public async Task<ActionResult> Event()
+    // {
+    //     var result = await _slackRequestHandler.HandleEventRequest(
+    //         HttpContext.Request);
+    //     // _slackEndpointConfiguration);
+    //
+    //     return Ok(result);
+    // }
 }

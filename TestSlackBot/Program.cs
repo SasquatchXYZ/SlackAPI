@@ -1,8 +1,5 @@
 using Microsoft.OpenApi.Models;
-using SlackNet.AspNetCore;
-using SlackNet.Events;
-using TestSlackBot.Handlers;
-using TestSlackBot.Models;
+using SlackClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,20 +9,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "TestSlackBot", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "TestSlackBot",
+        Version = "v1",
+    });
 });
 
-var slackConfiguration = builder.Configuration.GetSection("Slack").Get<SlackConfiguration>();
-if (slackConfiguration is null)
-    throw new Exception("Slack configuration is missing.");
-
-builder.Services.AddSingleton(new SlackEndpointConfiguration());
-
-builder.Services.AddSlackNet(configuration => configuration
-    .UseApiToken(slackConfiguration.AccessToken)
-    .UseSigningSecret(slackConfiguration.SigningSecret)
-    .RegisterEventHandler<MessageEvent, PingHandler>()
-);
+builder.Services.AddSlackClient(builder.Configuration);
 
 var app = builder.Build();
 
