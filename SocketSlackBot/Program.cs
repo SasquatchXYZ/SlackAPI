@@ -29,6 +29,11 @@ builder.Services.AddSlackNet(c => c
     .UseAppLevelToken(slackConfig.AppLevelToken)
     .UseSigningSecret(slackConfig.SigningSecret)
 
+    // App Home Screen Demo
+    // Event `app_home_opened` must be enabled for this to work
+    // You also must enable the `Home Tab` under the `App Home` Features for the bot
+    .RegisterEventHandler<AppHomeOpened, AppHome>()
+
     // Ping/Pong Demo
     .RegisterEventHandler<MessageEvent, PingHandler>()
 
