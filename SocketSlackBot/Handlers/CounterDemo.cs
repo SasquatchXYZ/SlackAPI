@@ -26,18 +26,18 @@ public partial class CounterDemo : IEventHandler<MessageEvent>, IBlockActionHand
 
     public async Task Handle(MessageEvent slackEvent)
     {
-        if (slackEvent.Text?.Contains(Trigger, StringComparison.OrdinalIgnoreCase) == true)
-        {
-            Console.WriteLine(
-                $"{(await _slackApiClient.Users.Info(slackEvent.User)).Name} asked for a counter demo in the {(await _slackApiClient.Conversations.Info(slackEvent.Channel)).Name} channel.");
+        if (slackEvent.Text?.Contains(Trigger, StringComparison.OrdinalIgnoreCase) != true)
+            return;
 
-            await _slackApiClient.Chat.PostMessage(
-                new Message
-                {
-                    Channel = slackEvent.Channel,
-                    Blocks = Blocks,
-                });
-        }
+        Console.WriteLine(
+            $"{(await _slackApiClient.Users.Info(slackEvent.User)).Name} asked for a counter demo in the {(await _slackApiClient.Conversations.Info(slackEvent.Channel)).Name} channel.");
+
+        await _slackApiClient.Chat.PostMessage(
+            new Message
+            {
+                Channel = slackEvent.Channel,
+                Blocks = Blocks,
+            });
     }
 
     public async Task Handle(ButtonAction action, BlockActionRequest request)
