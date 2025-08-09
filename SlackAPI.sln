@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSlackBot", "TestSlackBo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackClient", "SlackClient\SlackClient.csproj", "{762108BC-D120-411A-99B1-B990A06E00A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketSlackBot", "SocketSlackBot\SocketSlackBot.csproj", "{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{762108BC-D120-411A-99B1-B990A06E00A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{762108BC-D120-411A-99B1-B990A06E00A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{762108BC-D120-411A-99B1-B990A06E00A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
