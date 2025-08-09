@@ -43,6 +43,11 @@ builder.Services.AddSlackNet(c => c
     .RegisterBlockActionHandler<ButtonAction, CounterDemo>(CounterDemo.Add5)
     .RegisterBlockActionHandler<ButtonAction, CounterDemo>(CounterDemo.Add10)
 
+    // Modal view demo
+    .RegisterEventHandler<MessageEvent, ModalViewDemo>()
+    .RegisterBlockActionHandler<ButtonAction, ModalViewDemo>(ModalViewDemo.OpenModal)
+    .RegisterViewSubmissionHandler<ModalViewDemo>(ModalViewDemo.ModalCallbackId)
+
     // Simple Slash Command demo that echos the message
     .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
 );
