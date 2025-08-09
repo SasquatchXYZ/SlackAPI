@@ -28,6 +28,7 @@ builder.Services.AddSlackNet(c => c
     .UseAppLevelToken(slackConfig.AppLevelToken)
     .UseSigningSecret(slackConfig.SigningSecret)
     .RegisterEventHandler<MessageEvent, PingHandler>()
+    .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
 );
 
 var app = builder.Build();
