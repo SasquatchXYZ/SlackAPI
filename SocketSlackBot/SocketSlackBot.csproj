@@ -7,12 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.7"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.8"/>
+        <PackageReference Include="SlackNet.AspNetCore" Version="0.17.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\SlackClient\SlackClient.csproj" />
     </ItemGroup>
 
 </Project>
