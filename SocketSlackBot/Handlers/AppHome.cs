@@ -30,6 +30,7 @@ public class AppHome : IEventHandler<AppHomeOpened>
                                              Welcome to the SlackNet example.  Here's what you can do:
                                              - Say "ping" to get back a "pong"
                                              - Say "{CounterDemo.Trigger}" to get the counter demo
+                                             - Say "{ModalViewDemo.Trigger}" to open the modal view demo
                                              - Use the `{EchoDemo.SlashCommand}` slash command to see an echo
                                              """),
                     },
