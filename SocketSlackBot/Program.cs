@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using SlackNet.AspNetCore;
+using SlackNet.Blocks;
 using SlackNet.Events;
 using SocketSlackBot.Handlers;
 using SocketSlackBot.Models;
@@ -27,7 +28,17 @@ builder.Services.AddSlackNet(c => c
     .UseApiToken(slackConfig.ApiToken)
     .UseAppLevelToken(slackConfig.AppLevelToken)
     .UseSigningSecret(slackConfig.SigningSecret)
+
+    // Ping/Pong Demo
     .RegisterEventHandler<MessageEvent, PingHandler>()
+
+    // Counter Demo - Interactive Block message that updates itself
+    .RegisterEventHandler<MessageEvent, CounterDemo>()
+    .RegisterBlockActionHandler<ButtonAction, CounterDemo>(CounterDemo.Add1)
+    .RegisterBlockActionHandler<ButtonAction, CounterDemo>(CounterDemo.Add5)
+    .RegisterBlockActionHandler<ButtonAction, CounterDemo>(CounterDemo.Add10)
+
+    // Simple Slash Command demo that echos the message
     .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
 );
 
