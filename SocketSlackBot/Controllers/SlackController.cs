@@ -22,13 +22,21 @@ namespace SocketSlackBot.Controllers
             [FromBody] SlackMessageRequest request,
             CancellationToken cancellationToken = default)
         {
-            await _slack.Chat.PostMessage(
-                new Message
-                {
-                    Text = request.Message,
-                    Channel = request.SlackChannel
-                },
-                cancellationToken);
+            try
+            {
+                await _slack.Chat.PostMessage(
+                    new Message
+                    {
+                        Text = request.Message,
+                        Channel = request.SlackChannel,
+                    },
+                    cancellationToken);
+            }
+            catch (SlackException e)
+            {
+                Console.WriteLine(e.ErrorCode);
+                Console.WriteLine(e.Message);
+            }
 
             return Ok();
         }
