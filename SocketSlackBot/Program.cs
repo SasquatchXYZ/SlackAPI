@@ -51,6 +51,7 @@ builder.Services.AddSlackNet(c => c
 
     // Simple Slash Command demo that echos the message
     .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
+    .RegisterEventHandler<MessageEvent, GrafanaRule>()
 );
 
 var app = builder.Build();
