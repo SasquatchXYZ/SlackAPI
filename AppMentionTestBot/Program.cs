@@ -1,6 +1,8 @@
 using AppMentionTestBot.Configuration;
+using AppMentionTestBot.Handlers;
 using Microsoft.OpenApi.Models;
 using SlackNet.AspNetCore;
+using SlackNet.Events;
 using SlackNet.SocketMode;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,7 @@ builder.Services.AddSlackNet(aspNetSlackServiceConfiguration => aspNetSlackServi
     .UseApiToken(slackConfig.ApiToken)
     .UseAppLevelToken(slackConfig.AppLevelToken)
     .UseSigningSecret(slackConfig.SigningSecret)
+    .RegisterEventHandler<AppMention, AppMentionRule>()
 );
 
 var app = builder.Build();
