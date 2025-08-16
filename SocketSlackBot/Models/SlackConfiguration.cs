@@ -1,11 +1,10 @@
-﻿namespace SocketSlackBot.Models
+﻿namespace SocketSlackBot.Models;
+
+public record SlackConfiguration
 {
-    public record SlackConfiguration
-    {
-        // Bot User OAuth Token
-        public required string ApiToken { get; set; }
-        public required string AppLevelToken { get; set; }
-        public required string SigningSecret { get; set; }
-        public int NumberOfConnections { get; set; } = 1;
-    }
+    // Bot User OAuth Token
+    public required string ApiToken { get; set; }
+    public required string AppLevelToken { get; set; }
+    public required string SigningSecret { get; set; }
+    public int NumberOfConnections { get; set; } = 1;
 }
