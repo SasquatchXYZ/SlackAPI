@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackClient", "SlackClient\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketSlackBot", "SocketSlackBot\SocketSlackBot.csproj", "{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackEvents", "SlackEvents\SlackEvents.csproj", "{23D56C66-774C-4A36-8381-B2C57F469F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlackCore", "SlackCore\SlackCore.csproj", "{1584B273-F1F9-458F-A076-9DFD5D73B80B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2763290F-55B5-4C99-81A8-1C7A3CECB0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23D56C66-774C-4A36-8381-B2C57F469F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23D56C66-774C-4A36-8381-B2C57F469F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23D56C66-774C-4A36-8381-B2C57F469F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23D56C66-774C-4A36-8381-B2C57F469F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1584B273-F1F9-458F-A076-9DFD5D73B80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1584B273-F1F9-458F-A076-9DFD5D73B80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1584B273-F1F9-458F-A076-9DFD5D73B80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1584B273-F1F9-458F-A076-9DFD5D73B80B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
