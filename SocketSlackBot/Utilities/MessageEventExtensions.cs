@@ -22,4 +22,9 @@ public static partial class MessageEventExtensions
 
     [GeneratedRegex(@"<@(?<userId>[a-zA-Z0-9]+)(?:\|\S*)?>", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex UserRegex();
+
+    public static bool IsDirectMessage(this MessageEventBase messageEvent)
+    {
+        return Regex.Match(messageEvent.Channel, @"^D\S+$").Success;
+    }
 }

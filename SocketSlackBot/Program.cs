@@ -51,6 +51,8 @@ builder.Services.AddSlackNet(c => c
 
     // Simple Slash Command demo that echos the message
     .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
+
+    // Testing Some Rules
     .RegisterEventHandler<MessageEvent, GrafanaRule>()
 );
 
