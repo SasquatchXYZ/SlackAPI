@@ -6,12 +6,23 @@ namespace SlackCLI.Commands;
 
 public class AuthCommand : Command
 {
+    private readonly Option<string> _tokenOption = new(
+        "--token",
+        ["-t"])
+    {
+        Required = true,
+        Arity = ArgumentArity.ExactlyOne,
+        AllowMultipleArgumentsPerToken = false,
+    };
+
     public AuthCommand(string name, string? description = null)
         : base(name, description)
     {
+        Add(_tokenOption);
+
         SetAction(async parseResult =>
         {
-            var authToken = parseResult.GetValue<string>("--token");
+            var authToken = parseResult.GetValue(_tokenOption);
             var slackApiClient = new SlackServiceBuilder()
                 .UseApiToken(authToken)
                 .GetApiClient();
