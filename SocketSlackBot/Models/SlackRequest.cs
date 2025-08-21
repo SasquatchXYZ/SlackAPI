@@ -1,8 +1,7 @@
-﻿namespace SocketSlackBot.Models
+﻿namespace SocketSlackBot.Models;
+
+public class SlackMessageRequest
 {
-    public class SlackMessageRequest
-    {
-        public required string SlackChannel { get; set; }
-        public required string Message { get; set; }
-    }
+    public required string SlackChannel { get; set; }
+    public required string Message { get; set; }
 }

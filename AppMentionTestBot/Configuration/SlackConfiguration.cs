@@ -1,4 +1,4 @@
-﻿namespace SocketSlackBot.Models;
+namespace AppMentionTestBot.Configuration;
 
 public record SlackConfiguration
 {

@@ -2,6 +2,7 @@ using Microsoft.OpenApi.Models;
 using SlackNet.AspNetCore;
 using SlackNet.Blocks;
 using SlackNet.Events;
+using SlackNet.SocketMode;
 using SocketSlackBot.Handlers;
 using SocketSlackBot.Models;
 
@@ -50,6 +51,9 @@ builder.Services.AddSlackNet(c => c
 
     // Simple Slash Command demo that echos the message
     .RegisterSlashCommandHandler<EchoDemo>(EchoDemo.SlashCommand)
+
+    // Testing Some Rules
+    .RegisterEventHandler<MessageEvent, GrafanaRule>()
 );
 
 var app = builder.Build();
@@ -64,6 +68,12 @@ app.UseSwagger();
 app.UseSwaggerUI(options => { options.SwaggerEndpoint("/swagger/v1/swagger.json", "SocketSlackBot v1"); });
 app.UseHttpsRedirection();
 app.MapControllers();
-app.UseSlackNet(slackEndpointConfiguration => slackEndpointConfiguration.UseSocketMode(true));
+var socketModeConnectionOptions = new SocketModeConnectionOptions
+{
+    NumberOfConnections = slackConfig.NumberOfConnections,
+};
+
+app.UseSlackNet(slackEndpointConfiguration =>
+    slackEndpointConfiguration.UseSocketMode(true, socketModeConnectionOptions));
 
 app.Run();
